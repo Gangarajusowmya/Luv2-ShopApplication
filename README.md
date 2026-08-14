@@ -32,6 +32,8 @@ The project currently has the basic backend and frontend structure in place, and
 
 **Tools**
 - Visual Studio Code
+- IntelliJ
+- Postman
 - Git
 - GitHub
 
