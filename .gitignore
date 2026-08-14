@@ -1,0 +1,33 @@
+# Angular / Node
+node_modules/
+dist/
+.angular/
+.cache/
+.npm/
+
+# Spring Boot / Java
+target/
+*.class
+
+# IDE
+.idea/
+*.iml
+.vscode/
+.settings/
+.classpath
+.project
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Environment / secrets
+.env
+.env.*
+
+# macOS metadata
+__MACOSX/
+*.DS_Store

@@ -1,0 +1,24 @@
+<!-- 		
+this hardcoded code i got extracted from the app.component.htl  adding selector i over thgere and i created a component here and extractyed the code  -->
+			<div class="menu-sidebar-content js-scrollbar1">
+				<nav class="navbar-sidebar">
+					<ul class="list-unstyled navbar-list">
+
+
+						<li *ngFor= "let tempProductCategory of productCategories">
+							<a routerLink="/category/{{tempProductCategory.id}}" routerLinkActive="active-link">
+                             {{ tempProductCategory.categoryName }}
+                        </a>
+						</li>
+						<li>
+							<a routerLink="/category/2" routerLinkActive="active-link">Coffee Mugs</a>
+						</li>
+						<!-- <li>
+							<a href="#">Mouse Pads</a>
+						</li>
+						<li>
+							<a href="#">Luggage Tags</a>
+						</li> -->
+					</ul>
+				</nav>
+			</div>
