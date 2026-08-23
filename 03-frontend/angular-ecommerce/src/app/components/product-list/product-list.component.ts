@@ -14,7 +14,19 @@ import { ProductService } from 'src/app/services/product.service';
 export class ProductListComponent implements OnInit {
 products: Product[] = [];
 currentCategoryId: number = 1;
+  previousCategoryId: number = 1;
+
 searchMode: Boolean = false;
+
+//creating the new properties for the pagination 
+thePageNumber: number = 1;
+thePageSize: number = 5;
+theTotalElements: number = 0;
+
+previousKeyword: String = "";
+
+
+
   constructor(private productService: ProductService,
     private route: ActivatedRoute)
     
@@ -40,11 +52,22 @@ searchMode: Boolean = false;
   {
     const theKeyword: string = this.route.snapshot.paramMap.get('keyword')!;
     //now search for the products using the given keyword
-    this.productService.searchProducts(theKeyword).subscribe(
-      data => {
-        this.products = data;
-      }
-    )
+
+    //if we have a different keyword than previous
+    //then set the PageNumber to 1
+
+    if(this.previousKeyword != theKeyword)
+    {
+      this.thePageNumber = 1;
+    }
+
+    this.previousKeyword = theKeyword;
+    console.log(`keyword=${theKeyword}, thePageNumber=${this.thePageNumber}`);
+
+    this.productService.searchProductsPaginate(this.thePageNumber - 1,
+                                                this.thePageSize,
+                                                theKeyword).subscribe(this.processResult());
+    
   }
 
 
@@ -63,12 +86,40 @@ searchMode: Boolean = false;
   this.currentCategoryId = 1;
   }
 
-    this.productService.getProductList(this.currentCategoryId).subscribe(
-      data => {
-        this.products = data;
-      }
-    )
+  ///  //IMp point angulare will reuse a component if it is currently being viewed
 
+  ////checking if we have a different category id than the previous than we are going to set the pagenumber back to 1
+  if(this.previousCategoryId != this.currentCategoryId) {
+    this.thePageNumber = 1;
+  }
+ 
+  this.previousCategoryId = this.currentCategoryId;
+  console.log(`currentCategoryId=${this.currentCategoryId}, thePageNumber=${this.thePageNumber}`);
+ //getting  products for the given category id
+    this.productService.getProductListPaginate(this.thePageNumber - 1, this.thePageSize, this.currentCategoryId).subscribe(
+      data => {
+        this.products = data._embedded.products;
+        this.thePageNumber = data.page.number + 1;
+        this.thePageSize = data.page.size;
+        this.theTotalElements = data.page.totalElements;
+      }
+    );
+
+  }
+  updatePageSize(pageSize: String)
+  {
+    this.thePageSize = +pageSize;
+    this.thePageNumber = 1;
+    this.listProducts();
+  }
+  processResult()
+  {
+    return (data:any) => {
+      this.products = data._embedded.products;
+      this.thePageNumber = data.page.number + 1;
+      this.thePageSize = data.page.size;
+      this.theTotalElements = data.page.totalElements;
+    };
   }
 
 }

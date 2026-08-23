@@ -39,6 +39,18 @@ export class ProductService {
 
  // Inject HttpClient to make HTTP requests
   constructor(private httpClient: HttpClient) { }
+
+//here i'm defining the method for the pagination
+
+     getProductListPaginate(thePage: number,
+                            thePageSize: number,
+                            theCategoryId: number): Observable<GetResponse> {
+
+   //here i build the url based on the categoryid page and size.
+    const searchUrl = `${this.baseUrl}/search/findByCategoryId?id=${theCategoryId}` + `&page=${thePage}&size=${thePageSize}`;
+     return this.httpClient.get<GetResponse>(searchUrl);
+  }
+
  /*
   Fetch products from backend.
 
@@ -53,6 +65,11 @@ export class ProductService {
   Returns Observable<Product[]>
   */
   //getProductList(): Observable<Product[]> {
+  getProduct(theProductId: number): Observable<Product>
+  {
+    const productUrl = `${this.baseUrl}/${theProductId}`;
+    return this.httpClient.get<Product>(productUrl);
+  }
   getProductList(theCategoryId: number): Observable<Product[]> {
 
     
@@ -71,6 +88,18 @@ export class ProductService {
     return this.getProducts(searchUrl);
     
   }
+
+       searchProductsPaginate(thePage: number,
+                            thePageSize: number,
+                            theKeyword: String): Observable<GetResponse> {
+
+   //here i build the url based on the keyword page and size.
+    const searchUrl = `${this.baseUrl}/search/findByNameContaining?name=${theKeyword}` 
+                                              + `&page=${thePage}&size=${thePageSize}`;
+     return this.httpClient.get<GetResponse>(searchUrl);
+  }
+
+ 
 
   private getProducts(searchUrl: string): Observable<Product[]> {
     return this.httpClient.get<GetResponse>(searchUrl).pipe(
@@ -96,6 +125,12 @@ Interface represents Spring Data REST JSON response structure.
 interface GetResponse {
   _embedded: {
     products: Product[];
+  },
+  page: {
+    size: number,
+    totalElements: number;
+    totalPages: number,
+    number: number
   }
 }
 
