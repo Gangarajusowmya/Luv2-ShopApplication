@@ -1,230 +1,253 @@
-# Luv2-ShopApplication
+# Full-Stack E-Commerce Application
 
-Luv2-ShopApplication is an online fashion store application that I am developing as a full-stack project using Java, Spring Boot and Angular.
+A full-stack e-commerce web application developed using **Java, Spring Boot, Angular, TypeScript, MySQL, and REST APIs**.
 
-I am building the application step by step, starting with the backend and database, then connecting the Angular frontend with the backend APIs and adding the different shopping features.
+The project was developed and extended using a **provided starter codebase and sample database data**. I worked on both the backend and frontend to understand how a complete full-stack application works, including API development, database integration, frontend development, testing, and debugging.
 
-## About the Project
+## Project Overview
 
-The goal of this project is to build an online shopping application where users can browse products, search for products, filter products by category, view product details and eventually add products to a shopping cart and place orders.
+The application allows users to:
 
-I am developing and testing each part of the application as I go, rather than building everything at once.
+* Browse products
+* Browse products by category
+* Search for products
+* View product details
+* Navigate through multiple pages of products
+
+The Angular frontend communicates with the Spring Boot backend through REST APIs, and the backend connects to MySQL using Spring Data JPA and Hibernate.
+
+## My Contribution
+
+I worked on:
+
+* Extended the application using the provided starter codebase
+* Integrated Spring Boot with MySQL
+* Worked with Spring Data JPA and Hibernate
+* Developed and worked with REST APIs
+* Tested APIs using Postman
+* Developed Angular components and services
+* Implemented product category navigation
+* Implemented product listing and search
+* Implemented pagination
+* Implemented product details
+* Connected Angular services with Spring Boot REST APIs
+* Added and integrated product images
+* Explored Angular unit testing using Jasmine and Karma
+* Wrote and ran a unit test for one frontend functionality
+* Updated related Angular `.spec.ts` files
+* Used Git and GitHub for version control
 
 ## Technologies Used
 
 ### Backend
 
-- Java
-- Spring Boot
-- Spring Data JPA
-- Hibernate
-- REST APIs
-- Maven
+* Java
+* Spring Boot
+* Spring Data JPA
+* Hibernate
+* REST APIs
+* Maven
 
 ### Frontend
 
-- Angular
-- TypeScript
-- HTML
-- CSS
-- Bootstrap
+* Angular
+* TypeScript
+* HTML5
+* CSS3
+* Bootstrap
 
 ### Database
 
-- MySQL
+* MySQL
+* MySQL Workbench
+
+### Testing
+
+* Postman
+* Jasmine
+* Karma
 
 ### Tools
 
-- Visual Studio Code
-- Intellij
-- Postman
-- Git
-- GitHub
+* IntelliJ IDEA
+* Visual Studio Code
+* Git
+* GitHub
 
 ## Project Structure
 
-The project is organised into three main sections:
+```text
+EcommerceProject
+│
+├── 01-backend
+│   └── Spring Boot application
+│
+├── 02-starter-files
+│   └── Provided starter files and resources
+│
+└── 03-frontend
+    └── angular-ecommerce
+        └── Angular application
 
-### 01-backend
+## Backend
 
-Contains the Spring Boot application.
+The backend is developed using **Spring Boot** and provides REST APIs for the Angular frontend.
 
-It includes:
+Main areas include:
 
-- Product entity
-- Product Category entity
-- Product Repository
-- Product Category Repository
-- REST API configuration
-- Application configuration
-- Maven configuration
+* Product entity
+* Product Category entity
+* Product repositories
+* Product services
+* Product category services
+* REST controllers
+* Pagination
+* Database integration
 
-### 02-starter-files
-
-This folder contains the original starter material used while setting up the project.
-
-It includes sample SQL scripts, application properties and other reference resources that were provided as part of the project starter files.
-
-These files are kept separately from the main application code.
-
-### 03-frontend
-
-Contains the Angular application.
-
-It includes:
-
-- Product List
-- Product Category Menu
-- Search
-- Product Details
-- Product Service
-- Product and Product Category models
-- Product images
-- Angular configuration
-
-## Backend Development
-
-I started by setting up the Spring Boot backend and creating the basic structure required for the online store.
-
-The backend currently uses Spring Data JPA and Hibernate to communicate with the MySQL database.
-
-I created the Product and Product Category entities along with their repositories.
-
-The Spring Boot application exposes REST APIs that are used to retrieve product and category information.
-
-I also tested the APIs using Postman to make sure the backend is successfully retrieving and returning data from the database.
+Spring Data JPA and Hibernate are used to communicate with the MySQL database.
 
 ## Database
 
-The application is connected to a MySQL database.
+The application uses **MySQL**.
 
-The database contains the product and category information required by the application.
+The database structure and sample product/category data were provided through the starter resources. I integrated the existing database with the Spring Boot application and worked with the data using JPA and Hibernate.
 
-Some of the initial SQL scripts and sample data came from the starter material provided for the project. I used these as the starting point and connected the database to my Spring Boot application.
+Main tables include:
 
-The current data flow is:
+* `product`
+* `product_category`
 
-MySQL Database  
-↓  
-Spring Boot  
-↓  
-Spring Data JPA / Hibernate  
-↓  
-REST APIs  
-↓  
-Angular Frontend
+Products are connected to categories using a foreign-key relationship.
 
 ## REST API Testing
 
-After connecting the database to Spring Boot, I tested the REST APIs using Postman.
+I used **Postman** to test the REST APIs and verify that the backend returned the expected product and category data.
 
-The API testing confirmed that product information can be retrieved successfully from the database through the Spring Boot backend.
+Testing included:
 
-This allowed me to verify the backend before continuing with the frontend integration.
+* Product categories
+* Product listing
+* Product search
+* Pagination
+* Product details
 
-## Frontend Development
+## Frontend
 
-The Angular application is responsible for displaying the products and providing the user interface for the online store.
-
-So far, I have developed:
+The frontend is developed using **Angular and TypeScript**.
 
 ### Product Category Menu
 
-Created the category menu to allow products to be organised based on their category.
+Displays product categories retrieved from the backend API.
 
 ### Product List
 
-Created the product listing functionality to display products retrieved from the backend.
+Displays products retrieved from the Spring Boot REST API.
 
 ### Product Search
 
-Added product search functionality so users can search for products instead of manually going through the entire product list.
+Allows users to search for products.
 
 ### Pagination
 
-Added pagination to improve the way products are displayed when there are multiple products.
-
-Instead of displaying all products on one page, the application allows users to move between pages of products.
+Allows users to navigate through multiple pages of products.
 
 ### Product Details
 
-Created a Product Details component to display information about an individual product.
+Allows users to view detailed information about a selected product.
 
-The product list can be used to select a product and display its details.
+### Angular Services
+
+Angular services are used to communicate with the Spring Boot REST APIs using HTTP requests.
+
+## Angular Unit Testing
+
+I explored **Angular unit testing using Jasmine and Karma**.
+
+I wrote and ran a unit test for **one frontend functionality** and updated the related `.spec.ts` files to support the testing setup.
+
+## Frontend-Backend Integration
+
+```text
+User
+  │
+  ▼
+Angular Frontend
+  │
+  │ HTTP Request
+  ▼
+Spring Boot REST API
+  │
+  │ JPA / Hibernate
+  ▼
+MySQL Database
+  │
+  │ Data
+  ▼
+Spring Boot
+  │
+  │ HTTP Response
+  ▼
+Angular Frontend
+  │
+  ▼
+User
+```
 
 ## Current Progress
 
-The main product browsing functionality is now working.
+### Completed
 
-Completed so far:
+* Spring Boot backend integration
+* MySQL database integration
+* Product functionality
+* Product Category functionality
+* REST API development
+* REST API testing with Postman
+* Angular frontend
+* Product Category Menu
+* Product List
+* Product Search
+* Pagination
+* Product Details
+* Frontend-backend integration
+* Product images
+* Basic Angular unit testing
+* Git and GitHub version control
 
-- Spring Boot backend setup
-- Product entity
-- Product Category entity
-- Product Repository
-- Product Category Repository
-- MySQL database setup
-- Spring Boot and MySQL connection
-- REST API development
-- REST API testing using Postman
-- Angular frontend setup
-- Product Category Menu
-- Product List
-- Product Search
-- Pagination
-- Product Details
-- Angular Product Service
-- Frontend and backend integration
-- Product images
+### Planned
 
-The application can now retrieve product information from the MySQL database through the Spring Boot REST APIs and display it in the Angular application.
+* Shopping Cart
+* Add products to cart
+* Update cart quantities
+* Remove products from cart
+* Cart totals
+* Checkout
+* Order functionality
+* UI improvements
+* Additional testing
 
-Users can browse the products, search for products and navigate through the product results using pagination.
+## What I Learned
 
-## What's Next
+This project helped me gain practical experience with:
 
-The next part of the project is focused on adding the shopping functionality.
-
-I plan to work on:
-
-- Shopping Cart
-- Add products to the cart
-- Update cart item quantities
-- Remove products from the cart
-- Calculate cart totals
-- Checkout functionality
-- Order functionality
-- Status Component
-- Improve the overall user interface
-- Complete end-to-end testing
-
-## What I Am Learning Through This Project
-
-This project is giving me practical experience in developing a full-stack application and connecting the different layers together.
-
-Through this project, I am working with:
-
-- Java
-- Spring Boot
-- Spring Data JPA
-- Hibernate
-- REST API development
-- MySQL
-- Angular
-- TypeScript
-- API integration
-- Postman
-- Git
-- GitHub
-
-One of the main things I am learning through the project is how data flows from the database to the backend API and then from the API to the frontend application.
-
-I am also gaining practical experience in developing features one at a time, testing them and integrating them into the existing application.
+* Java and Spring Boot
+* REST API development
+* Spring Data JPA and Hibernate
+* MySQL database integration
+* Angular and TypeScript
+* Frontend-backend integration
+* API testing with Postman
+* Angular unit testing
+* Git and GitHub
+* Debugging and troubleshooting
 
 ## GitHub Repository
 
+**GitHub:**
 https://github.com/Gangarajusowmya/Luv2-ShopApplication
 
 ## Author
 
-Sowmya Gangaraju
+**Sowmya Gangaraju**
+
+Java | Spring Boot | Angular | REST APIs | MySQL
