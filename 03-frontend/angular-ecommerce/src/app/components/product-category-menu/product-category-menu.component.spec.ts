@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 import { ProductCategoryMenuComponent } from './product-category-menu.component';
 
@@ -8,7 +9,8 @@ describe('ProductCategoryMenuComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ProductCategoryMenuComponent ]
+      declarations: [ProductCategoryMenuComponent],
+      imports: [HttpClientTestingModule]
     })
     .compileComponents();
 

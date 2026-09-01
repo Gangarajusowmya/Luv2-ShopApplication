@@ -1,6 +1,10 @@
+import { NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 import { ProductListComponent } from './product-list.component';
+import { ActivatedRoute } from '@angular/router';
+import { of } from 'rxjs';
 
 describe('ProductListComponent', () => {
   let component: ProductListComponent;
@@ -8,7 +12,28 @@ describe('ProductListComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ProductListComponent ]
+      declarations: [ProductListComponent],
+      imports: [
+        HttpClientTestingModule,
+        NgbPaginationModule
+      ],
+      providers: [
+        {
+          provide: ActivatedRoute,
+          useValue: {
+            paramMap: of({
+              has: () => false,
+              get: () => null
+            }),
+            snapshot: {
+              paramMap: {
+                has: () => false,
+                get: () => null
+              }
+            }
+          }
+        }
+      ]
     })
     .compileComponents();
 

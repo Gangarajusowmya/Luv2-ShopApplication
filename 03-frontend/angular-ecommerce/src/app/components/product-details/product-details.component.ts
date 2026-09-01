@@ -12,23 +12,26 @@ export class ProductDetailsComponent implements OnInit {
 
   product!: Product;
 
-  constructor(private productService: ProductService, private route: ActivatedRoute) { }
-
+  constructor(
+    private productService: ProductService,
+    private route: ActivatedRoute
+  ) { }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(() => {
       this.handleProductDetails();
-    })
+    });
   }
-  handleProductDetails(){
-    // get the "id" param string and convert string to a number using the "+" symbol
 
-    const theProductId: number = +this.route.snapshot.paramMap.get('id')!;
+  handleProductDetails(): void {
+
+    const theProductId: number =
+      +this.route.snapshot.paramMap.get('id')!;
+
     this.productService.getProduct(theProductId).subscribe(
       data => {
         this.product = data;
       }
-    )
-
+    );
   }
 }
