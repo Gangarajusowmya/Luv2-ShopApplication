@@ -19,6 +19,16 @@
                     <div class="items">
                         <label>Quantity:</label>{{ tempCartItem.quantity }}
                     </div>
+                    <p class="mt-2">Subtotal: {{tempCartItem.quantity * tempCartItem.unit_price | currency: 'USD' }}</p>
+
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2"></td>
+                <td style="font-weight: bold">
+                    <p>Total Quantity: {{ totalQuantity }}</p>
+                    <p>Shipping: FREE</p>
+                    <P>Total Price: {{ totalPrice | currency: 'USD' }}</P>
                 </td>
             </tr>
         </table>
