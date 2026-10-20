@@ -62,4 +62,12 @@ export class CartDetailsComponent implements OnInit {
     // Decrease the quantity of the selected cart item
     this.cartService.decrementQuantity(theCartItem);
   }
+  // remove(theCartItem: CartItem)
+  // {
+  //   this.cartService.remove(theCartItem);
+  // }
+
+  remove(theCartItem: CartItem) {
+  console.log('Remove clicked');
+}
 }
